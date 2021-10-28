@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display&display=swap');
 /* Variáveis */
-:root{
+:root {
     --cor-prim: #F9D84D;
     --cor-prim-clara: #FFEC9C;
     --cor-secun: #F94D58;
@@ -12,6 +12,7 @@
     --fonte-texto: 'IBM Plex Sans', sans-serif;
     --fonte-titulo: 'Playfair Display', serif;
 }
+  
 
 /******************* CSS RESET ****************************/
 *{
@@ -24,6 +25,11 @@
 }
 
 /********************************************/
+html{
+    font-size: 16px;
+    scroll-behavior: smooth; /* Efeito scrool suave */
+}
+
 header{
     display: flex;
     justify-content: center; /* centralização vertical horizontal*/
@@ -84,25 +90,50 @@ main {
     justify-content: center; /* centralização vertical horizontal*/
     align-items: stretch; /* Filhos com 100% da altura do pai */        
     min-height: 200px; /* Altura mínima */
+    background-color: var(--cor-fundo-clara);
 }
 
 footer {
     display: flex;
-    justify-content: center; /* centralização vertical horizontal*/
+    justify-content: space-around; /* centralização vertical horizontal*/
     align-items: center; /* centralização vertical */    
-    background-color: var(--cor-fundo-clara);    
+    background-color: var(--cor-fundo);    
     min-height: 50px; /* Altura mínima */
+    padding: 20px;
+    color: var(--cor-texto);
+}
+
+/* Links dentro do footer */
+footer a {
+    color: var(--cor-prim);
+    text-decoration: none; /* Sem sublinhado */
+    transition: 400ms;
+}
+
+footer a:hover{
+    text-decoration: underline;
 }
 
 section {
     display: flex;
     justify-content: center; /* centralização vertical horizontal*/
     align-items: center; /* centralização vertical */
-    flex-direction: column; /*  itens filhos em coluna (na vertical) */
-    border: 1px solid indigo;
-    background-color: plum;        
+    flex-direction: column; /*  itens filhos em coluna (na vertical) */    
+    background-color: transparent;        
     flex-grow: 3;
-    margin: 5px;
+    margin: 20px;
+    text-shadow: 1px 1px 1px rgba(255,255, 255, 0.4);
+}
+
+/* Regra para o título h1 que está dentro de section */
+section > h1{/* O Sinal de > indica que serão atingidos apenas os h1 FILHOS DIRETOS de section */
+    text-align: left;
+    width: 100%;
+    color: var(--cor-fundo);
+    font-family: var(--fonte-titulo);
+    font-style: italic;
+    font-size: 2rem;
+    text-shadow: -1px -1px -1px rgba(255, 255, 255, 0.4);
 }
 
 aside {
@@ -118,12 +149,73 @@ aside {
 article {
     display: flex;
     justify-content: center; /* centralização vertical horizontal*/
-    align-items: center; /* centralização vertical */
-    border: 1px solid sienna;
-    background-color: linen;            
+    align-items: center; /* centralização vertical */    
+    flex-wrap: wrap;
+    background-color: transparent;            
     margin: 5px;
     min-height: 100px;
     width: 100%;
+}
+/* Regra para os titulos h1 que estão dentro dos articles */
+article > h1{
+    text-align: right;
+    width: 100%;
+    color: var(--cor-texto);
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+}
+
+/* Classe cartao-carro */
+.cartao-carro{        
+    border: 1px solid var(--cor-fundo);
+    background-color: var(--cor-fundo);
+    width: 300px;
+    height: 360px;    
+    margin: 20px;
+    border-radius: 16px;
+    box-shadow: 3px 3px 6px rgba(255, 255, 255, 0.15);
+}
+
+/* Regra para link de .cartao-carro */
+.cartao-carro a{
+    text-decoration: none;
+}
+
+.cartao-carro a div{
+    transition: 400ms;
+}
+
+/* Regra para o link de .cartao-carro quando o mouse sobrevoa */
+.cartao-carro a:hover div{
+    filter: brightness(1.2);
+    box-shadow: 3px 3px 6px rgba(255, 255, 255, 0.15);
+}
+
+/* Regra para div interna de .cartao-carro */
+.cartao-carro div{    
+    height: 360px;
+    border-radius: 16px;
+}
+
+/* Regra para imagens dentro de .cartao-carro */
+.cartao-carro img{
+    width: 100%;    
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+/* Regra para h1 dentro de .cartao-carro */
+.cartao-carro h1 {
+    margin: 20px;
+    font-family: var(--fonte-titulo);
+    font-size: 1.75rem;
+    color: var(--cor-secun);    
+}
+
+/* Regra para p dentro de .cartao-carro */
+.cartao-carro p {
+    color: var(--cor-texto);
+    margin: 0 20px;
 }
 
 /* Regras para tela com largura de até 600px */
