@@ -32,7 +32,7 @@ html{
 
 header{
     display: flex;
-    justify-content: center; /* centralização vertical horizontal*/
+    justify-content: space-between; /* centralização horizontal*/
     align-items: center; /* centralização vertical */    
     background-color: var(--cor-prim);
     min-height: 50px; /* Altura mínima */
@@ -41,6 +41,38 @@ header{
 
 #img-logo{
     background-color: transparent;
+    margin: 20px;
+}
+
+#social ul{
+    list-style: none;
+    display: flex;
+    margin: 20px;
+}
+
+#social ul li a{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+#social ul li img{
+    width: 40px;
+    filter: brightness(0.225);
+}
+
+#social ul li a span{
+    margin-left: 6px;
+    visibility: hidden;
+    width: 0;
+    transition: visibility 500ms, width 0;
+}
+
+#social ul li a:hover span{    
+    visibility: visible;
+    width: auto;
+
 }
 
 #menu-principal {
@@ -138,12 +170,35 @@ section > h1{/* O Sinal de > indica que serão atingidos apenas os h1 FILHOS DIR
 
 aside {
     display: flex;
-    justify-content: center; /* centralização vertical horizontal*/
-    align-items: center; /* centralização vertical */
-    border: 1px dashed darkgray;
-    background-color: lightgrey;        
-    width: 25%;
-    margin: 5px;
+    justify-content: left; /* Alinhamento Inicial */
+    align-items: center; /* centralização vertical */    
+    background-color: var(--cor-fundo);        
+    margin: 20px;
+    border-radius: 16px;
+    width: 25%;    
+    padding: 16px;
+    color: var(--cor-texto);    
+    font-size: 1.2rem;
+    flex-direction: column;
+}
+
+/* Links que estão do aside */
+aside a {
+    color: var(--cor-prim-clara);
+    text-decoration: none;
+}
+
+aside a:hover{
+    color: var(--cor-prim);
+    text-decoration: underline;
+}
+
+aside article{
+    text-align: center;
+    margin: 50px 0;
+    padding: 30px 20px;
+    border: 3px groove var(--cor-texto);
+    border-radius: 8px;
 }
 
 article {
@@ -231,3 +286,91 @@ article > h1{
         width: 100%;
     }
 }
+
+
+/*********************************************************** 
+                REGRAS DE RESPONSIVIDADE
+ ***********************************************************/
+/*  Dispositivos(celulares) pequenos */
+@media (max-width: 567px) {
+     body{
+         filter: hue-rotate(45deg);
+     }
+     /* Empilha os elementos do header */
+     header{
+         flex-direction: column;
+     }
+}
+
+/*  Dispositivos(celulares) médios */
+@media (max-width: 768px) {
+    body{
+        filter: hue-rotate(135deg);
+    }     
+    /* RECOLHER AQUI  */
+
+    /* Os Anuncios do article voltam a ficar na vertical */
+    aside{
+        flex-direction: column;
+        /* Faz com que os article voltam a ficar na vertical */
+        align-items: flex-start;
+    }
+
+    aside article{
+        margin: 30px 0;
+    }
+
+    /* Empilha os elementos do footer */
+    footer{
+        flex-direction: column;
+    }
+
+    footer img, footer address{
+        margin-bottom: 20px;
+    }
+}
+
+
+/*  Dispositivos(tablets) */
+@media (max-width: 992px) {
+    body{
+        filter: hue-rotate(90deg);
+    }
+    /* Por Enquanto não necessita de ajuste */
+}
+
+/*  Computadorescom tela pequena  */
+@media (max-width: 1200px) {
+    body{
+        filter: hue-rotate(45deg);
+    }
+    /* Esconde o texto das redes sociais  */
+    #social ul li a span{
+        display: none;
+    }
+
+    /* Ajusta flex-direction do main para column para passar o aside para baixo */
+    main{
+        flex-direction: column;
+    }
+    
+
+    /* section e aside passam ater largurade 100% */
+    section, aside{
+        /* Usa a função cal() para descontar os 40px das margens laterais dos elementos e evitar rolagem horizonal */
+        width: calc(100% - 40px);
+    }
+
+    /* Os anúncios do article ficam na horizontal */
+    aside{
+        flex-direction: row;
+        /* faz com que os articles fiquem com a mesma altura */
+        align-items: stretch;
+    }
+
+    aside article {
+        margin: 0 30px;
+    }
+}
+
+/* O padrão do nosso CSS é para telas> 1200px */
